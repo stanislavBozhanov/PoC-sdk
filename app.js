@@ -2,6 +2,8 @@ var express = require('express');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
+var generatePDF = require('./utils/generatePDF');
+var questionRoutes = require('./routes/questions');
 
 var app = express();
 
@@ -10,9 +12,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
+// Routes
 app.use(function (req, res, next) {
   require('./routes/index')(req, res, next);
 });
+app.use('/pdf', generatePDF);
+app.use('/questions', questionRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

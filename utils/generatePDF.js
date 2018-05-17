@@ -1,7 +1,7 @@
 const PDFDocument = require('pdfkit');
 
 
-function generatePDF(req, res, next){
+function generatePDF(req, res, next) {
   const doc = new PDFDocument();
   var filename = 'test.pdf';
   // Setting response to 'attachment' (download).

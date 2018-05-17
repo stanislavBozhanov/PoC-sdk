@@ -4,8 +4,12 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var generatePDF = require('./utils/generatePDF');
 var questionRoutes = require('./routes/questions');
+var swaggerUi = require('swagger-ui-express');
+var swaggerDocument = require('./swagger.json');
 
 var app = express();
+
+
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -16,6 +20,7 @@ app.use(cookieParser());
 app.use(function (req, res, next) {
   require('./routes/index')(req, res, next);
 });
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/pdf', generatePDF);
 app.use('/questions', questionRoutes);
 

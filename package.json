@@ -18,6 +18,7 @@
     "pdfkit": "^0.8.3",
     "sequelize": "^4.37.7",
     "sequelize-cli": "^4.0.0",
+    "swagger-ui-express": "^3.0.9",
     "uuid": "^3.2.1"
   }
 }

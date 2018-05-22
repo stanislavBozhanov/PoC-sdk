@@ -41,7 +41,6 @@ exports.library_get = function (req, res) {
 
 exports.library_post = function (req, res) {
   db.Library.create({
-    uuid: uuid.v4(),
     name: 'pesho'
   }).then(function () {
     res.setHeader('Content-Type', 'application/json');

@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./bin/www",
+    "migrate": "cross-env NODE_ENV=development ./node_modules/.bin/sequelize db:migrate",
+    "undo_migrate": "cross-env NODE_ENV=development ./node_modules/.bin/sequelize db:migrate:undo",
     "pretest": "cross-env NODE_ENV=test ./node_modules/.bin/sequelize db:migrate",
     "test": "cross-env NODE_ENV=test ./node_modules/.bin/mocha"
   },

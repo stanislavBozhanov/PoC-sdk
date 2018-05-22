@@ -4,6 +4,8 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var generatePDF = require('./utils/generatePDF');
 var questionRoutes = require('./routes/questions');
+var libraryRoutes = require('./routes/libraries');
+var questionGroupRoutes = require('./routes/questionGroups');
 var swaggerUi = require('swagger-ui-express');
 var swaggerDocument = require('./swagger.json');
 
@@ -23,6 +25,8 @@ app.use(function (req, res, next) {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/pdf', generatePDF);
 app.use('/questions', questionRoutes);
+app.use('/libraries', libraryRoutes);
+app.use('/questionGroups', questionGroupRoutes);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
